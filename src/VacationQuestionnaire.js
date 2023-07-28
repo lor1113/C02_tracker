@@ -1,14 +1,12 @@
 import VacationForm from "./VacationForm";
 
 function VacationQuestionnaire ({dropdownClick, dropdown, handleOnChange}) {
-    if (dropdown !== 1){
-        return(<div onClick = {(event) => dropdownClick(event, 1)}>Vacations</div>)
-    } else {
-        return(<>
-                <div onClick = {(event) => dropdownClick(event, 0)}>Vacation Form </div>
-                <VacationForm handleOnChange={handleOnChange}/>
-            </>)
-    }
+    return(
+        <div class="formDiv">
+            <span onClick = {(event) => dropdownClick(event, (dropdown === 1?0:1))}> <h3>Vacation Form</h3> </span>
+            {dropdown === 1?<VacationForm handleOnChange={handleOnChange}/>:<></>}
+        </div>
+        )
     
 }
 export default VacationQuestionnaire;

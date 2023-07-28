@@ -12,13 +12,13 @@ function VacationForm ({handleOnChange}) {
             <option value="continent">I usually stay within my continent</option>
             <option value="worldwide">I usually travel all over the world</option>
             </select> 
-            <label for="vacationDistance">How do you usually travel to vacation?</label>
-            <select name="vacationDistance" id="vacationDistance">
+            <label for="vacationTravel">How do you usually travel to vacation?</label>
+            <select name="vacationTravel" id="vacationTravel">
             <option value="transit">Train/Coach/Public Transit</option>
             <option value="car">With a car</option>
             <option value="plane">With a plane</option>
             </select>
-        </form> 
+        </form>
     )
 }
 export default VacationForm;

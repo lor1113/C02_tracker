@@ -1,14 +1,12 @@
 import TransportForm from "./TransportForm";
 
 function TransportQuestionnaire ({dropdownClick, dropdown, handleOnChange}) {
-    if (dropdown !== 2){
-        return(<div onClick = {(event) => dropdownClick(event, 2)}>Transportation</div>)
-    } else {
-        return(<>
-                <div onClick = {(event) => dropdownClick(event, 0)}>Transportation Form </div>
-                <TransportForm handleOnChange={handleOnChange}/>
-            </>)
-    }
+    return(
+        <div class="formDiv">
+            <span onClick = {(event) => dropdownClick(event, (dropdown === 2?0:2))}> <h3>Transport Form</h3> </span>
+            {dropdown === 2?<TransportForm handleOnChange={handleOnChange}/>:<></>}
+        </div>
+        )
     
 }
 export default TransportQuestionnaire;

@@ -16,7 +16,12 @@ function Questionnaire() {
 
     const handleOnChange = (event) => {
         let newFormValues = {...formValues}
-        newFormValues[event.target.id] = event.target.value
+        if (event.target.value){
+            newFormValues[event.target.id] = event.target.value
+        } else {
+            delete newFormValues[event.target.id]
+        }
+        
         setFormValues(newFormValues)
         console.log(newFormValues)
     }
