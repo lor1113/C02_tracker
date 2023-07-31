@@ -35,3 +35,12 @@
 .red {
     color: red;
 }
+
+.results {
+    text-align: center;
+}
+  
+.subscript {
+    vertical-align: text-bottom;
+    font-size: 0.7em;
+}

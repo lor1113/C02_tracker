@@ -4,6 +4,8 @@ import TransportForm from "./TransportForm";
 import DietForm from "./DietForm";
 import ConsumptionForm from "./ConsumptionForm"
 import EnergyForm from "./EnergyForm"
+import QuestionnaireButton from './QuestionnaireButton';
+import {useNavigate} from 'react-router-dom';
 
 import c02Calculator from './c02Calculator';
 
@@ -35,6 +37,7 @@ function Questionnaire() {
     })
     
     const [allCompleted, setAllCompleted] = useState(false)
+    const navigate = useNavigate();
 
     const dropdownClick = (event,clicked) => {
         event.preventDefault()
@@ -48,9 +51,6 @@ function Questionnaire() {
                 const intValue = parseInt(event.target.value)
                 const eventMax = parseInt(event.target.max)
                 const eventMin = parseInt(event.target.min)
-                console.log(eventMax)
-                console.log(eventMin)
-                console.log(intValue)
                 if (intValue > eventMax) {
                     newFormValues[event.target.name][event.target.id] = eventMax
                 } else if (intValue < eventMin) {
@@ -82,9 +82,13 @@ function Questionnaire() {
         setFormValues(newFormValues)
     }
 
-    const handleSubmit = (event) => {
-        console.log(event)
-        console.log(c02Calculator(formValues))
+    const handleSubmit = () => {
+        const outValues = c02Calculator(formValues)
+        const newWebsiteState = {
+            "answers": formValues,
+            "results": outValues
+        }
+        navigate('/results',{state:newWebsiteState})
     }
 
     return (
@@ -94,7 +98,7 @@ function Questionnaire() {
             <SubQuestionnaire dropdownNum={2} SubForm={DietForm} formText={"Section: Diet"} formValues={formValues["diet"]} isCompleted={completed["diet"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
             <SubQuestionnaire dropdownNum={3} SubForm={ConsumptionForm} formText={"Section: Consumption"} formValues={formValues["consumption"]} isCompleted={completed["consumption"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
             <SubQuestionnaire dropdownNum={4} SubForm={EnergyForm} formText={"Section: Energy"} formValues={formValues["energy"]} isCompleted={completed["energy"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
-            {allCompleted ? <button onClick={handleSubmit} className="questionnaireButton" type="button" >See my results!</button>  : <button className="questionnaireButton" type="button" disabled>See my results!</button> }
+            <QuestionnaireButton handleSubmit={handleSubmit} allCompleted={allCompleted}/>
         </div>
     );
 }
