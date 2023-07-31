@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Chart from './components/Chart';
+import FootprintDetail from './components/FootprintDetail';
 
 function App() {
   const [user] = useState({
@@ -71,6 +72,7 @@ function App() {
   return (
     <div className="App">
       <Chart footprintData={user.footprintData} chartOptions={chartOptions} />
+      <FootprintDetail footprintData={user.footprintData} />
     </div>
   );
 }
