@@ -40,7 +40,7 @@ const consumptionClothes = {
 const consumptionElectronics = {
     "fewMonths": 0.25,
     "halfYear": 0.5,
-    "yearly": 1,
+    "year": 1,
     "fewYears": 0.5
 }
 
@@ -79,11 +79,11 @@ const c02Calculator = (answers) => {
     const energyAnswers = answers["energy"]
     const energyOut = (energyAnswers["heatingCount"] / 12 * heatingMult) + (energyAnswers["coolingCount"] / 12 * coolingMult) + (energyElectricity[energyAnswers["energyElectricity"]] * energyMult)
     const out = {
-        "vacation": vacationOut,
-        "transport": transportOut,
-        "diet": dietOut,
-        "consumption": consumptionOut,
-        "energy": energyOut
+        "vacation": parseInt(vacationOut.toFixed(2)),
+        "transport": parseInt(transportOut.toFixed(2)),
+        "diet": parseInt(dietOut.toFixed(2)),
+        "consumption": parseInt(consumptionOut.toFixed(2)),
+        "energy": parseInt(energyOut.toFixed(2))
     }
     return out
 }

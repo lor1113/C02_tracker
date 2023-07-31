@@ -3,17 +3,14 @@ import { useEffect, useState } from 'react';
 import Chart from './Chart';
 import FootprintDetail from './FootprintDetail';
 
-function ResultsContainer() {
+const ResultsContainer = ({websiteState}) => {
     const [user] = useState({
         name: 'User1',
-        footprintData: {
-          vacations: 100,
-          transport: 200,
-          diet: 300,
-          personal: 400,
-          energy: 500
-        }
+        footprintData: websiteState["results"]
       })
+
+      console.log("chart start")
+      console.log(websiteState)
       const [chartOptions, setChartOptions] = useState(null)
     
       useEffect(() => {
@@ -44,7 +41,7 @@ function ResultsContainer() {
                 data: [
                   {
                     name: 'Vacations',
-                    y: user.footprintData.vacations
+                    y: user.footprintData.vacation
                   },
                   {
                     name: 'Transport',
@@ -56,7 +53,7 @@ function ResultsContainer() {
                   },
                   {
                     name: 'Personal consumption',
-                    y: user.footprintData.personal
+                    y: user.footprintData.consumption
                   },
                   {
                     name: 'Domestic energy',
