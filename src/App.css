@@ -3,6 +3,6 @@
 }
 
 .subscript {
-  vertical-align: sub;
-  font-size: small;
+  vertical-align: text-bottom;
+  font-size: 0.7em;
 }
