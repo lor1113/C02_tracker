@@ -1,8 +1,37 @@
 .formDiv {
     border-radius: 25px;
+    box-sizing: border-box;
     border: 2px solid #73AD21;
     width:90vw;
     margin:auto;
     padding: 1%;
+    padding-right: 10%;
     font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.formSpan {
+    display: flex;
+    justify-content: space-between;
+}
+
+.initialForm {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.questionnaireButton {
+    font-size: 2em;
+    float:right;
+    margin-right: 2%;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
 }

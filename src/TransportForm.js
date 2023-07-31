@@ -1,16 +1,19 @@
-import styled from 'styled-components'
-
-function TransportForm ({handleOnChange}) {
+function TransportForm ({handleOnChange, formValues}) {
     return(
-        <form onChange={handleOnChange}>
-            <label for="transportType">What is your primary mode of transportation?</label>
-            <select name="transportType" id="transportType">
-            <option value="Transit">Public Transit</option>
-            <option value="Car">A Car</option>
-            <option value="walking">Walking or cycling</option>
-            </select> 
-            <label for="travelCount">How often do you travel per week?</label>
-            <input type="number" id="travelCount" name="travelCount" min="0"/>
+        <form onChange={handleOnChange} className='initialForm'>
+            <span>
+                <label htmlFor="transportType">What is your primary mode of transportation?</label><br/>
+                <select name="transport" id="transportType" defaultValue={formValues["transportType"] ? formValues["transportType"] :"lol" } required>
+                <option value="lol" hidden disabled/>
+                <option value="Transit">Public Transit</option>
+                <option value="Car">A Car</option>
+                <option value="walking">Walking or cycling</option>
+                </select> 
+            </span>
+            <span>
+                <label htmlFor="travelCount">How often do you travel per week?</label><br/>
+                <input type="number" id="travelCount" name="transport" min="0" defaultValue={formValues["travelCount"] ? formValues["travelCount"] :"" } required/>
+            </span>
         </form> 
     )
 }
