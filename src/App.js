@@ -3,7 +3,7 @@ import Questionnaire from './Questionnaire';
 
 function App() {
   return (
-    <Questionnaire></Questionnaire>
+    <Questionnaire/>
   );
 }
 

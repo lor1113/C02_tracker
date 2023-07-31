@@ -3,7 +3,7 @@ function VacationForm ({handleOnChange, formValues}) {
         <form className='initialForm' onChange={handleOnChange}>
             <span>
                 <label htmlFor="vacationCount">How many vacations do you take a year?</label><br/>
-                <input type="number" id="vacationCount" name="vacation" min="0" defaultValue={formValues["vacationCount"] ? formValues["vacationCount"] :""} required/>
+                <input type="number" id="vacationCount" name="vacation" min="0" max="999" defaultValue={formValues["vacationCount"] ? formValues["vacationCount"] :""} required/>
             </span>
             <span>
                 <label htmlFor="vacationDistance">How far do you usually travel to vacation?</label><br/>
