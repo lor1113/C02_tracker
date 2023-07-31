@@ -35,6 +35,7 @@ db.co2Tracker.insertMany([
             q1:"answear1",
             q2:"answear2",
             }}
+            
         ,
       },
       {
