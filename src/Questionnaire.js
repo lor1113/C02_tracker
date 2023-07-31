@@ -19,24 +19,11 @@ const questionCounts = {
     "energy":3
 }
 
-function Questionnaire() {
+function Questionnaire({websiteState, stateHandler}) {
     const [dropdown,setDropdown] = useState(0)
-    const [formValues, setFormValues] = useState({
-        "vacation":{},
-        "diet":{},
-        "transport":{},
-        "consumption":{},
-        "energy":{}
-    })
-    const [completed, setCompleted] = useState({
-        "vacation":false,
-        "diet":false,
-        "transport":false,
-        "consumption":false,
-        "energy":false,
-    })
-    
-    const [allCompleted, setAllCompleted] = useState(false)
+    const [formValues, setFormValues] = useState(() => websiteState["answers"])
+    const [completed, setCompleted] = useState(() => websiteState["completed"])
+    const [allCompleted, setAllCompleted] = useState(websiteState["allCompleted"])
     const navigate = useNavigate();
 
     const dropdownClick = (event,clicked) => {
@@ -48,9 +35,9 @@ function Questionnaire() {
         let newFormValues = {...formValues}
         if (event.target.value){
             if (event.target.type === "number") {
-                const intValue = parseInt(event.target.value)
-                const eventMax = parseInt(event.target.max)
-                const eventMin = parseInt(event.target.min)
+                const intValue = Number(event.target.value)
+                const eventMax = Number(event.target.max)
+                const eventMin = Number(event.target.min)
                 if (intValue > eventMax) {
                     newFormValues[event.target.name][event.target.id] = eventMax
                 } else if (intValue < eventMin) {
@@ -66,7 +53,6 @@ function Questionnaire() {
                 newCompleted[event.target.name] = true
                 if (Object.values(newCompleted).every(Boolean)) {
                     setAllCompleted(true)
-                    console.log("set all completed true")
                 }
                 setCompleted(newCompleted)
             }
@@ -75,7 +61,6 @@ function Questionnaire() {
             let newCompleted = {...completed}
             newCompleted[event.target.name] = false
             setCompleted(newCompleted)
-            console.log("set all completed false")
             setAllCompleted(false)
         }
         
@@ -86,9 +71,12 @@ function Questionnaire() {
         const outValues = c02Calculator(formValues)
         const newWebsiteState = {
             "answers": formValues,
-            "results": outValues
+            "results": outValues,
+            "completed": completed,
+            "allCompleted": allCompleted
         }
-        navigate('/results',{state:newWebsiteState})
+        stateHandler(newWebsiteState)
+        navigate('/results')
     }
 
     return (

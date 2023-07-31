@@ -5,12 +5,12 @@ function FootprintDetail({footprintData}) {
     const totalFootprint = values.reduce((accumulator, value) => {
         return accumulator + value;
     }, 0);
+    const roundedFootprint = Number(totalFootprint.toFixed(2))
 
     return (
         <>
-            <h3>My carbon footprint: {totalFootprint}</h3>
-            <h3>World average: </h3>
-            <h3>Group average: </h3>
+            <h3>My carbon footprint: {roundedFootprint} Tons of CO<span className="subscript">2</span></h3>
+            <h3>World average: 4.79 Tons of CO<span className="subscript">2</span></h3>
         </>
     )
 }

@@ -1,13 +1,8 @@
 import './App.css';
 import Button from './components/Button';
 import ResultsContainer from './components/ResultsContainer';
-import {useLocation} from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
 
-const Results = () => {
-    const location = useLocation();
-    const websiteState = location.state
-    const navigate = useNavigate()
+const Results = ({websiteState}) => {
 
     return (
         <div className="results">
