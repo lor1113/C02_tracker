@@ -68,3 +68,12 @@
     vertical-align: text-bottom;
     font-size: 0.7em;
 }
+
+.chartContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chartDiv {
+    min-width: 50%
+}
