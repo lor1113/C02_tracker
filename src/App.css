@@ -27,7 +27,10 @@
 }
 
 .questionnaireButton {
-    float:right;
+    float: right;
+}
+
+button {
     margin-right: 2%;
     font-size: 1em;
     padding: 0.7em;
@@ -42,12 +45,12 @@
     color: white;
 }
 
-.questionnaireButton:disabled:hover {
+button:disabled:hover {
     background-color: lightgray;
     color: white;
 }
 
-.questionnaireButton:hover{
+button:hover{
     background-color: lightgreen;
     color: black;
 }
@@ -63,7 +66,7 @@
 .results {
     text-align: center;
 }
-  
+
 .subscript {
     vertical-align: text-bottom;
     font-size: 0.7em;
@@ -75,5 +78,19 @@
 }
 
 .chartDiv {
-    min-width: 50%
+    min-width: 50%;
+}
+
+header {
+    background-color: lightgreen;
+}
+
+h1 {
+    padding: 0.5em;
+}
+
+.footprintDiv {
+    margin: 2em 8em;
+    border: 6px dotted rgb(44, 175, 254);
+    border-radius: 30px;
 }
