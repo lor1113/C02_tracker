@@ -1,6 +1,5 @@
-import './App.css';
-import Button from './components/Button';
-import ResultsContainer from './components/ResultsContainer';
+import Button from './Button';
+import ResultsContainer from './ResultsContainer';
 
 const Results = ({websiteState}) => {
 

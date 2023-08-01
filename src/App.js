@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useState} from 'react';
-import Questionnaire from './Questionnaire';
-import Results from './Results'
+import Questionnaire from './components/Questionnaire';
+import Results from './components/Results'
 
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
