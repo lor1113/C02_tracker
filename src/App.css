@@ -23,9 +23,32 @@
 }
 
 .questionnaireButton {
-    font-size: 2em;
-    float:right;
+    float: right;
+}
+
+button {
     margin-right: 2%;
+    font-size: 1em;
+    padding: 0.7em;
+    border: none;
+    background-color: rgb(84, 79, 197);
+    color: white;
+    font-weight: bold;
+}
+
+*:disabled {
+    background-color: lightgray;
+    color: white;
+}
+
+button:disabled:hover {
+    background-color: lightgray;
+    color: white;
+}
+
+button:hover{
+    background-color: lightgreen;
+    color: black;
 }
 
 .green {
@@ -39,8 +62,22 @@
 .results {
     text-align: center;
 }
-  
+
 .subscript {
     vertical-align: text-bottom;
     font-size: 0.7em;
+}
+
+header {
+    background-color: lightgreen;
+}
+
+h1 {
+    padding: 0.5em;
+}
+
+.footprintDiv {
+    margin: 2em 8em;
+    border: 6px dotted rgb(44, 175, 254);
+    border-radius: 30px;
 }
