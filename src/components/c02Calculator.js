@@ -78,12 +78,13 @@ const c02Calculator = (answers) => {
     const consumptionOut = consumptionClothes[consumptionAnswers["consumptionClothes"]] * consumptionElectronics[consumptionAnswers["consumptionElectronics"]] * consumptionSustainability[consumptionAnswers["consumptionSustainability"]] * consumptionMult
     const energyAnswers = answers["energy"]
     const energyOut = (energyAnswers["heatingCount"] / 12 * heatingMult) + (energyAnswers["coolingCount"] / 12 * coolingMult) + (energyElectricity[energyAnswers["energyElectricity"]] * energyMult)
+    console.log(vacationOut,transportOut, dietOut,consumptionOut,energyOut)
     const out = {
-        "vacation": parseInt(vacationOut.toFixed(2)),
-        "transport": parseInt(transportOut.toFixed(2)),
-        "diet": parseInt(dietOut.toFixed(2)),
-        "consumption": parseInt(consumptionOut.toFixed(2)),
-        "energy": parseInt(energyOut.toFixed(2))
+        "vacation": Number(vacationOut.toFixed(2)),
+        "transport": Number(transportOut.toFixed(2)),
+        "diet": Number(dietOut.toFixed(2)),
+        "consumption": Number(consumptionOut.toFixed(2)),
+        "energy": Number(energyOut.toFixed(2))
     }
     return out
 }

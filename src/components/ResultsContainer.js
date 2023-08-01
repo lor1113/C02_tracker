@@ -26,7 +26,7 @@ const ResultsContainer = ({websiteState}) => {
               text: 'CO<span class="highcharts-title subscript">2</span> footprint by category'
             },
             tooltip: {
-              pointFormat: '<b>{point.y}</b> CO2'
+              pointFormat: '<b>{point.y}</b> Tons CO2'
             },
             plotOptions: {
               pie: {
