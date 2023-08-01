@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "highcharts": "^11.1.0",
     "highcharts-react-official": "^3.2.0",
@@ -18,8 +17,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --watchAll",
+    "eject": "react-scripts eject",
+    "test:e2e": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -38,5 +38,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^12.1.5",
+    "cypress": "^12.17.2"
   }
 }
