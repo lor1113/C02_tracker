@@ -22,10 +22,34 @@
     line-height: 1.5em;
 }
 
+.formTitle {
+    min-width: 15vw;
+}
+
 .questionnaireButton {
-    font-size: 2em;
     float:right;
     margin-right: 2%;
+    font-size: 1em;
+    padding: 0.7em;
+    border: none;
+    background-color: rgb(84, 79, 197);
+    color: white;
+    font-weight: bold;
+}
+
+*:disabled {
+    background-color: lightgray;
+    color: white;
+}
+
+.questionnaireButton:disabled:hover {
+    background-color: lightgray;
+    color: white;
+}
+
+.questionnaireButton:hover{
+    background-color: lightgreen;
+    color: black;
 }
 
 .green {
