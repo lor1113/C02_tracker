@@ -28,6 +28,7 @@ function Questionnaire({websiteState, stateHandler}) {
     const navigate = useNavigate();
 
     const prevResults = websiteState["results"]
+    const prevCompleted = websiteState["allCompleted"]
 
     const dropdownClick = (event,clicked) => {
         event.preventDefault()
@@ -76,8 +77,13 @@ function Questionnaire({websiteState, stateHandler}) {
         const newWebsiteState = {
             "answers": formValues,
             "results": outValues,
+            "oldResults": prevResults,
             "completed": completed,
-            "allCompleted": allCompleted
+            "allCompleted": allCompleted,
+            "oldResultsPresent": websiteState["oldResultsPresent"]
+        }
+        if (prevCompleted) {
+            newWebsiteState["oldResultsPresent"] = true
         }
         stateHandler(newWebsiteState)
         navigate('/results')

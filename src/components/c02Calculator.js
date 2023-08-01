@@ -38,8 +38,8 @@ const consumptionClothes = {
 }   
 
 const consumptionElectronics = {
-    "fewMonths": 0.25,
-    "halfYear": 0.5,
+    "fewMonths": 4,
+    "halfYear": 2,
     "year": 1,
     "fewYears": 0.5
 }
@@ -67,7 +67,6 @@ const heatingMult = 1
 const energyMult = 1.8
 
 const c02Calculator = (answers) => {
-    console.log(answers)
     const vacationAnswers = answers["vacation"]
     const vacationOut = vacationDistance[vacationAnswers["vacationDistance"]] * vacationTravel[vacationAnswers["vacationTravel"]] * vacationAnswers["vacationCount"] * vacationMult
     const transportAnswers = answers["transport"]
@@ -78,7 +77,6 @@ const c02Calculator = (answers) => {
     const consumptionOut = consumptionClothes[consumptionAnswers["consumptionClothes"]] * consumptionElectronics[consumptionAnswers["consumptionElectronics"]] * consumptionSustainability[consumptionAnswers["consumptionSustainability"]] * consumptionMult
     const energyAnswers = answers["energy"]
     const energyOut = (energyAnswers["heatingCount"] / 12 * heatingMult) + (energyAnswers["coolingCount"] / 12 * coolingMult) + (energyElectricity[energyAnswers["energyElectricity"]] * energyMult)
-    console.log(vacationOut,transportOut, dietOut,consumptionOut,energyOut)
     const out = {
         "vacation": Number(vacationOut.toFixed(2)),
         "transport": Number(transportOut.toFixed(2)),

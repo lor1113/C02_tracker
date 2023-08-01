@@ -9,8 +9,8 @@ function FootprintDetail({footprintData}) {
 
     return (
         <>
-            <h3>My carbon footprint: {roundedFootprint} Tons of CO<span className="subscript">2</span></h3>
-            <h3>World average: 4.79 Tons of CO<span className="subscript">2</span></h3>
+            <h4>Carbon footprint: {roundedFootprint} Tons of CO<span className="subscript">2</span></h4>
+            <h4>World average: 4.79 Tons of CO<span className="subscript">2</span></h4>
         </>
     )
 }
