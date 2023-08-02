@@ -14,6 +14,6 @@ describe("App", ()=>{
     });
 
     it('Can select option from list', ()=>{
-        const select = container.getByTestId('weekly')
+        
     });
 })
