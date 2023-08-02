@@ -2,7 +2,7 @@ import SubQuestionnaireDiff from "./SubQuestionnaireDiff";
 
 function SubQuestionnaire ({dropdownClick, tempResult, prevResult, dropdown, dropdownNum, SubForm, formText, handleOnChange, formValues, isCompleted}) {
     return(
-        <div className="formDiv">
+        <div id={dropdownNum} className="formDiv">
             <span className="formSpan" onClick = {(event) => dropdownClick(event, (dropdown === dropdownNum?0:dropdownNum))}>
                  <h3 className="formTitle">{formText}</h3>
                  <h3>{prevResult !== 0 ? <SubQuestionnaireDiff tempResult={tempResult} prevResult={prevResult}/> : <></>}</h3>
