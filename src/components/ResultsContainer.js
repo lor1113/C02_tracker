@@ -7,7 +7,7 @@ const ResultsContainer = ({websiteState}) => {
       const [chartOptions, setChartOptions] = useState(null)
       const [oldChartOptions, setOldChartOptions] = useState(null)
 
-      const titleText1 = (websiteState.oldResults ? 'New Results: CO<span class="highcharts-title subscript">2</span> footprint by category' :
+      const titleText1 = (websiteState.oldResultsPresent ? 'New Results: CO<span class="highcharts-title subscript">2</span> footprint by category' :
       'Your Results: CO<span class="highcharts-title subscript">2</span> footprint by category')
       const titleText2 = 'Previous Results: CO<span class="highcharts-title subscript">2</span> footprint by category'
 
