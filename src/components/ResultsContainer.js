@@ -4,26 +4,20 @@ import Chart from './Chart';
 import FootprintDetail from './FootprintDetail';
 
 const ResultsContainer = ({websiteState}) => {
-    const [user] = useState({
-        name: 'User1',
-        footprintData: websiteState["results"]
-      })
-
-      console.log("chart start")
-      console.log(websiteState)
       const [chartOptions, setChartOptions] = useState(null)
-    
-      useEffect(() => {
-        getChartOptions()
-      }, [user])
-    
-      const getChartOptions = function() {
+      const [oldChartOptions, setOldChartOptions] = useState(null)
+
+      const titleText1 = (websiteState.oldResultsPresent ? 'New Results: CO<span class="highcharts-title subscript">2</span> footprint by category' :
+      'Your Results: CO<span class="highcharts-title subscript">2</span> footprint by category')
+      const titleText2 = 'Previous Results: CO<span class="highcharts-title subscript">2</span> footprint by category'
+
+      const getChartOptions = function(stateKey, titleText) {
           const options = {
             chart: {
             type: 'pie'
             },
             title: {
-              text: 'CO<span class="highcharts-title subscript">2</span> footprint by category'
+              text: titleText
             },
             tooltip: {
               pointFormat: '<b>{point.y}</b> Tons CO2'
@@ -41,36 +35,50 @@ const ResultsContainer = ({websiteState}) => {
                 data: [
                   {
                     name: 'Vacations',
-                    y: user.footprintData.vacation
+                    y: websiteState[stateKey].vacation
                   },
                   {
                     name: 'Transport',
-                    y: user.footprintData.transport
+                    y: websiteState[stateKey].transport
                   },
                   {
                     name: 'Diet',
-                    y: user.footprintData.diet
+                    y: websiteState[stateKey].diet
                   },
                   {
                     name: 'Personal consumption',
-                    y: user.footprintData.consumption
+                    y: websiteState[stateKey].consumption
                   },
                   {
                     name: 'Domestic energy',
-                    y: user.footprintData.energy
+                    y: websiteState[stateKey].energy
                   }
                 ]
               }
             ]
-          };
-          setChartOptions(options);
+          }
+          return options
         }
 
+    useEffect(() => {
+      setChartOptions(getChartOptions("results", titleText1))
+      if (websiteState.oldResultsPresent) {
+        setOldChartOptions(getChartOptions("oldResults", titleText2))
+      }
+    }, [])
+
     return (
-        <>
-            <Chart footprintData={user.footprintData} chartOptions={chartOptions} />
-            <FootprintDetail footprintData={user.footprintData} />
-        </>
+        <div className="chartContainer">
+            <div className="chartDiv">
+                <Chart footprintData={websiteState.results} chartOptions={chartOptions} />
+                <FootprintDetail footprintData={websiteState.results} />
+            </div>
+            {websiteState.oldResultsPresent ? 
+                <div className="chartDiv">
+                    <Chart footprintData={websiteState.oldResults} chartOptions={oldChartOptions} />
+                    <FootprintDetail footprintData={websiteState.oldResults} />
+                </div> : <></>}
+        </div>
     )
 }
 

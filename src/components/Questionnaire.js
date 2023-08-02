@@ -24,7 +24,11 @@ function Questionnaire({websiteState, stateHandler}) {
     const [formValues, setFormValues] = useState(() => websiteState["answers"])
     const [completed, setCompleted] = useState(() => websiteState["completed"])
     const [allCompleted, setAllCompleted] = useState(websiteState["allCompleted"])
+    const [tempResults, setTempResults] = useState(() => websiteState["results"])
     const navigate = useNavigate();
+
+    const prevResults = websiteState["results"]
+    const prevCompleted = websiteState["allCompleted"]
 
     const dropdownClick = (event,clicked) => {
         event.preventDefault()
@@ -63,7 +67,8 @@ function Questionnaire({websiteState, stateHandler}) {
             setCompleted(newCompleted)
             setAllCompleted(false)
         }
-        
+        const newTempResults = c02Calculator(newFormValues)
+        setTempResults(newTempResults)
         setFormValues(newFormValues)
     }
 
@@ -72,8 +77,13 @@ function Questionnaire({websiteState, stateHandler}) {
         const newWebsiteState = {
             "answers": formValues,
             "results": outValues,
+            "oldResults": prevResults,
             "completed": completed,
-            "allCompleted": allCompleted
+            "allCompleted": allCompleted,
+            "oldResultsPresent": websiteState["oldResultsPresent"]
+        }
+        if (prevCompleted) {
+            newWebsiteState["oldResultsPresent"] = true
         }
         stateHandler(newWebsiteState)
         navigate('/results')
@@ -81,11 +91,11 @@ function Questionnaire({websiteState, stateHandler}) {
 
     return (
         <div>
-            <SubQuestionnaire dropdownNum={0} SubForm={VacationForm} formText={"Section: Vacations"} formValues={formValues["vacation"]} isCompleted={completed["vacation"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
-            <SubQuestionnaire dropdownNum={1} SubForm={TransportForm} formText={"Section: Transport"} formValues={formValues["transport"]} isCompleted={completed["transport"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
-            <SubQuestionnaire dropdownNum={2} SubForm={DietForm} formText={"Section: Diet"} formValues={formValues["diet"]} isCompleted={completed["diet"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
-            <SubQuestionnaire dropdownNum={3} SubForm={ConsumptionForm} formText={"Section: Consumption"} formValues={formValues["consumption"]} isCompleted={completed["consumption"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
-            <SubQuestionnaire dropdownNum={4} SubForm={EnergyForm} formText={"Section: Energy"} formValues={formValues["energy"]} isCompleted={completed["energy"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
+            <SubQuestionnaire dropdownNum={1} tempResult={tempResults["vacation"]} prevResult={prevResults["vacation"]} SubForm={VacationForm} formText={"Section: Vacations"} formValues={formValues["vacation"]} isCompleted={completed["vacation"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
+            <SubQuestionnaire dropdownNum={2} tempResult={tempResults["transport"]} prevResult={prevResults["transport"]} SubForm={TransportForm} formText={"Section: Transport"} formValues={formValues["transport"]} isCompleted={completed["transport"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
+            <SubQuestionnaire dropdownNum={3} tempResult={tempResults["diet"]} prevResult={prevResults["diet"]} SubForm={DietForm} formText={"Section: Diet"} formValues={formValues["diet"]} isCompleted={completed["diet"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
+            <SubQuestionnaire dropdownNum={4} tempResult={tempResults["consumption"]} prevResult={prevResults["consumption"]} SubForm={ConsumptionForm} formText={"Section: Consumption"} formValues={formValues["consumption"]} isCompleted={completed["consumption"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
+            <SubQuestionnaire dropdownNum={5} tempResult={tempResults["energy"]} prevResult={prevResults["energy"]} SubForm={EnergyForm} formText={"Section: Energy"} formValues={formValues["energy"]} isCompleted={completed["energy"]} dropdownClick={dropdownClick} dropdown={dropdown} handleOnChange={handleOnChange}/>
             <QuestionnaireButton handleSubmit={handleSubmit} allCompleted={allCompleted}/>
         </div>
     );
