@@ -11,5 +11,9 @@ describe("App", ()=>{
 
     it('Testing suite works', ()=>{
         expect(1).toEqual(1)
-    })
+    });
+
+    it('Can select option from list', ()=>{
+        const select = container.getByTestId('weekly')
+    });
 })

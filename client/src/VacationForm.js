@@ -7,7 +7,7 @@ function VacationForm ({handleOnChange, formValues}) {
             </span>
             <span>
                 <label htmlFor="vacationDistance">How far do you usually travel to vacation?</label><br/>
-                <select name="vacation" id="vacationDistance" defaultValue={formValues["vacationDistance"] ? formValues["vacationDistance"] :"lol"} required>
+                <select name="vacation" data-testid="vacationDistance" id="vacationDistance" defaultValue={formValues["vacationDistance"] ? formValues["vacationDistance"] :"lol"} required>
                 <option value="lol" hidden disabled/>
                 <option value="local">Locally, less than an hour away</option>
                 <option value="country">I usually stay within my country</option>
